@@ -16,6 +16,8 @@
 import argparse
 import sys
 import time
+import threading
+
 
 import cv2
 from tflite_support.task import core
@@ -29,6 +31,7 @@ _TEXT_COLOR = (0, 0, 255)  # red
 _FONT_SIZE = 1
 _FONT_THICKNESS = 1
 _FPS_AVERAGE_FRAME_COUNT = 10
+
 
 
 def run(model: str, max_results: int, score_threshold: float, num_threads: int,
@@ -90,11 +93,19 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
     for idx, category in enumerate(categories.classifications[0].categories):
       category_name = category.category_name
       score = round(category.score, 2)
-    #   if("bottle" in category_name):
-    #     print("!!UNLOCK!!") # Replace with code for unlocking bin
-    #     time.sleep(2)
-    #     print("!!LOCK!!") # Replace with code for locking bin   
-    #     time.sleep(2)     
+      if("bottle" in category_name):
+        print("UNLOCKING")
+        time.sleep(1)
+        print("UNLOCKED")
+        time.sleep(3)
+        print("LOCKING")
+        time.sleep(1)
+        print("LOCKED")
+        cap.release()
+        cap = cv2.VideoCapture(camera_id)
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+
       result_text = category_name + ' (' + str(score) + ')'
       text_location = (_LEFT_MARGIN, (idx + 2) * _ROW_SIZE)
       cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
@@ -159,12 +170,12 @@ def main():
       '--frameWidth',
       help='Width of frame to capture from camera.',
       required=False,
-      default=640)
+      default=1280)
   parser.add_argument(
       '--frameHeight',
       help='Height of frame to capture from camera.',
       required=False,
-      default=480)
+      default=960)
   args = parser.parse_args()
 
   run(args.model, int(args.maxResults),

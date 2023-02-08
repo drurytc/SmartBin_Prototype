@@ -94,13 +94,10 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       category_name = category.category_name
       score = round(category.score, 2)
       if("bottle" in category_name):
-        print("UNLOCKING")
-        time.sleep(1)
         print("UNLOCKED")
-        time.sleep(3)
-        print("LOCKING")
-        time.sleep(1)
+        time.sleep(6)
         print("LOCKED")
+        
         cap.release()
         cap = cv2.VideoCapture(camera_id)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)

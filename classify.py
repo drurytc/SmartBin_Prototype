@@ -28,7 +28,7 @@ from tflite_support.task import vision
 _ROW_SIZE = 20  # pixels
 _LEFT_MARGIN = 24  # pixels
 _TEXT_COLOR = (0, 0, 255)  # red
-_FONT_SIZE = 1
+_FONT_SIZE = 3
 _FONT_THICKNESS = 1
 _FPS_AVERAGE_FRAME_COUNT = 10
 

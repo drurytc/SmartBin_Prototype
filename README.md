@@ -103,6 +103,15 @@ sh setup.sh
 ```
 python3 classify.py
 ```
+
+# If you see an error running the sample:
+ImportError: libcblas.so.3: cannot open shared object file: No such file or directory
+you can fix it by installing an OpenCV dependency that is missing on your Raspberry Pi.
+
+```
+sudo apt-get install libatlas-base-dev
+```
+
 *   You can optionally specify the `model` parameter to set the TensorFlow Lite
     model to be used:
     *   The default value is `efficientnet_lite0.tflite`

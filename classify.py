@@ -138,7 +138,7 @@ def main():
       '--model',
       help='Name of image classification model.',
       required=False,
-      default='lite4.tflite')
+      default='efficientnet4_withTranferLearningOnRecyclingDataSet.tflite')
   parser.add_argument(
       '--maxResults',
       help='Max of classification results.',

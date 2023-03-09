@@ -139,7 +139,7 @@ def write_out(image, category):
     name = '0.jpg'
   else:
     name = str(len(os.listdir(path))) + ".jpg"
-  print(f'saving image named {str(len([name for name in os.listdir(path) if os.path.isfile(name)]))}, to {path}')
+  print(f'saving image named {name}, to {path}')
   cv2.imwrite(os.path.join(path , name), image)
 
 

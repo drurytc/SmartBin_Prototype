@@ -51,9 +51,11 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       height: The height of the frame captured from the camera.
   """
 
+  model_path = f'./models/{model}'
+
   # Initialize the image classification model
   base_options = core.BaseOptions(
-      file_name=model, use_coral=enable_edgetpu, num_threads=num_threads)
+      file_name=model_path, use_coral=enable_edgetpu, num_threads=num_threads)
 
   # Enable Coral by this setting
   classification_options = processor.ClassificationOptions(

@@ -17,7 +17,7 @@ import argparse
 import sys
 import time
 import threading
-
+import os
 
 import cv2
 from tflite_support.task import core
@@ -32,10 +32,12 @@ _FONT_SIZE = 3
 _FONT_THICKNESS = 1
 _FPS_AVERAGE_FRAME_COUNT = 10
 
+# Bin Parameters
+_UNLOCK_THRESHOLD = 0.8
 
 
 def run(model: str, max_results: int, score_threshold: float, num_threads: int,
-        enable_edgetpu: bool, camera_id: int, width: int, height: int) -> None:
+        enable_edgetpu: bool, camera_id: int, width: int, height: int, save_images: bool) -> None:
   """Continuously run inference on images acquired from the camera.
 
   Args:
@@ -93,15 +95,17 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
     for idx, category in enumerate(categories.classifications[0].categories):
       category_name = category.category_name
       score = round(category.score, 2)
-      if("bottle" in category_name):
-        print("UNLOCKED")
-        time.sleep(6)
-        print("LOCKED")
-        
+
+      if("nonRecyclable" not in category_name and score > _UNLOCK_THRESHOLD):
         cap.release()
         cap = cv2.VideoCapture(camera_id)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+        if(save_images):
+          write_out(image, category.category_name)
+        print("UNLOCKED")
+        time.sleep(4)
+        print("LOCKED")
 
       result_text = category_name + ' (' + str(score) + ')'
       text_location = (_LEFT_MARGIN, (idx + 2) * _ROW_SIZE)
@@ -128,9 +132,18 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   cap.release()
   cv2.destroyAllWindows()
 
+def write_out(image, category):
+  path = f'./classified_images/{category}/'
+  if not os.path.isdir(path):
+    os.mkdir(path)
+    name = '0.jpg'
+  else:
+    name = str(len(os.listdir(path))) + ".jpg"
+  print(f'saving image named {str(len([name for name in os.listdir(path) if os.path.isfile(name)]))}, to {path}')
+  cv2.imwrite(os.path.join(path , name), image)
+
 
 def main():
-  print("hi")
 
   parser = argparse.ArgumentParser(
       formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -173,11 +186,17 @@ def main():
       help='Height of frame to capture from camera.',
       required=False,
       default=960)
+  parser.add_argument(
+    '--saveImages', 
+    help= 'Optionally save classified images in local dataset',
+    action='store_true',
+    required=False,
+    default=False)
   args = parser.parse_args()
 
   run(args.model, int(args.maxResults),
       args.scoreThreshold, int(args.numThreads), bool(args.enableEdgeTPU),
-      int(args.cameraId), args.frameWidth, args.frameHeight)
+      int(args.cameraId), args.frameWidth, args.frameHeight, bool(args.saveImages))
 
 
 if __name__ == '__main__':

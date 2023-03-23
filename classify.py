@@ -34,7 +34,8 @@ _FPS_AVERAGE_FRAME_COUNT = 10
 
 # Bin Parameters
 _UNLOCK_THRESHOLD = 0.6
-
+_TIME_FOR_CHALLENGING = 10
+time_of_last_classification = 0
 
 def run(model: str, max_results: int, score_threshold: float, num_threads: int,
         enable_edgetpu: bool, camera_id: int, width: int, height: int, save_images_on: bool) -> None:
@@ -99,7 +100,9 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       category_name = best_guess.category_name
       score = best_guess.score
 
-     
+      last_classified_image = image
+      last_classified_image_category = category_name
+      time_of_last_classification = time.time()
 
       result_text = category_name + ' (' + str(score) + ')'
       cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
@@ -118,16 +121,24 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       else:
         print("NOT RECYCLEABLE. If this is incorrect, press the challenge button (c)")
         time.sleep(1)
-      last_classified_image = image
 
     # Challenge the classification (save it to directory, and upload it to Firestore)
     elif key_press == ord('c'):
-      upload_to_fireStoreDB(last_classified_image)
+      # Gives 10 seconds to challenge the image
+      ellapsed_time = time.time() - time_of_last_classification
+
+      if ellapsed_time > _TIME_FOR_CHALLENGING:
+        print("Time ran out of time to challenge the item. Try classifying again, then challenge.")
+      elif last_classified_image is last_challenged_iamge:
+        print("Can not challenge the same image twice")
+      else:
+          upload_to_fireStoreDB(last_classified_image, last_classified_image_category)
+          last_challenged_iamge = last_classified_image
+      
 
     # Stop the program if the ESC key is pressed.
     elif key_press == 27:
       break
-
     # Calculate the FPS
     if counter % _FPS_AVERAGE_FRAME_COUNT == 0:
       end_time = time.time()
@@ -146,7 +157,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   cap.release()
   cv2.destroyAllWindows()
 
-def upload_to_fireStoreDB(image):
+def upload_to_fireStoreDB(image, category):
   print("Uploading image to challenged Images DB")
 
 

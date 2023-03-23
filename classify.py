@@ -37,6 +37,7 @@ _UNLOCK_THRESHOLD = 0.6
 _TIME_FOR_CHALLENGING = 10
 time_of_last_classification = 0
 
+
 def run(model: str, max_results: int, score_threshold: float, num_threads: int,
         enable_edgetpu: bool, camera_id: int, width: int, height: int, save_images_on: bool) -> None:
   """Continuously run inference on images acquired from the camera.
@@ -75,6 +76,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
   cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
+  last_challenged_image = None # quick fix for variable used before assignemt error
   # Continuously capture images from the camera and run inference
   while cap.isOpened():
     success, image = cap.read()
@@ -129,11 +131,11 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
 
       if ellapsed_time > _TIME_FOR_CHALLENGING:
         print("Time ran out of time to challenge the item. Try classifying again, then challenge.")
-      elif last_classified_image is last_challenged_iamge:
+      elif last_classified_image is last_challenged_image:
         print("Can not challenge the same image twice")
       else:
           upload_to_fireStoreDB(last_classified_image, last_classified_image_category)
-          last_challenged_iamge = last_classified_image
+          last_challenged_image = last_classified_image
       
 
     # Stop the program if the ESC key is pressed.

@@ -37,7 +37,7 @@ _UNLOCK_THRESHOLD = 0.8
 
 
 def run(model: str, max_results: int, score_threshold: float, num_threads: int,
-        enable_edgetpu: bool, camera_id: int, width: int, height: int, save_images: bool) -> None:
+        enable_edgetpu: bool, camera_id: int, width: int, height: int, save_images_on: bool) -> None:
   """Continuously run inference on images acquired from the camera.
 
   Args:
@@ -103,8 +103,8 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
         cap = cv2.VideoCapture(camera_id)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-        if(save_images):
-          write_out(image, category.category_name)
+        if(save_images_on):
+          write_out_image_to_classified_directory(image, category.category_name)
         print("UNLOCKED")
         time.sleep(4)
         print("LOCKED")
@@ -134,7 +134,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   cap.release()
   cv2.destroyAllWindows()
 
-def write_out(image, category):
+def write_out_image_to_classified_directory(image, category):
   path = f'./classified_images/{category}/'
   if not os.path.isdir(path):
     os.mkdir(path)

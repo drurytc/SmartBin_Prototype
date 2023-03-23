@@ -81,9 +81,10 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       sys.exit(
           'ERROR: Unable to read from webcam. Please verify your webcam settings.'
       )
+    key_press = cv2.waitKey(2)
 
     # Only classify the image when spacebar is pressed
-    if cv2.waitKey(1) == 32: # Spacebar code
+    if key_press == 32: # Spacebar code
       counter += 1
       image = cv2.flip(image, 1)
       # Convert the image from BGR to RGB as required by the TFLite model.
@@ -94,30 +95,38 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       # List classification results
       categories = classifier.classify(tensor_image)
 
-      # Show classification results on the image
-      for idx, category in enumerate(categories.classifications[0].categories):
-        category_name = category.category_name
-        score = round(category.score, 2)
+      best_guess = max(categories.classifications[0].categories, key=lambda x:x.score)
+      category_name = best_guess.category_name
+      score = best_guess.score
 
-        result_text = category_name + ' (' + str(score) + ')'
-        text_location = (_LEFT_MARGIN, (idx + 2) * _ROW_SIZE)
-        cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
-            _FONT_SIZE, _TEXT_COLOR, _FONT_THICKNESS)
+     
 
-        if("nonRecyclable" not in category_name and score > _UNLOCK_THRESHOLD):
-          cap.release()
-          cap = cv2.VideoCapture(camera_id)
-          cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-          cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-          if(save_images_on):
-            write_out_image_to_classified_directory(image, category.category_name)
-          print("UNLOCKED")
-          time.sleep(4)
-          print("LOCKED")
-        else:
-          print("NOT RECYCLEABLE. If this is incorrect, press the challenge button (c)")
+      result_text = category_name + ' (' + str(score) + ')'
+      cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
+          _FONT_SIZE, _TEXT_COLOR, _FONT_THICKNESS)
 
+      if("nonRecyclable" not in category_name and score > _UNLOCK_THRESHOLD):
+        cap.release()
+        cap = cv2.VideoCapture(camera_id)
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+        if(save_images_on):
+          write_out_image_to_classified_directory(image, category_name)
+        print("UNLOCKED")
+        time.sleep(4)
+        print("LOCKED")
+      else:
+        print("NOT RECYCLEABLE. If this is incorrect, press the challenge button (c)")
+        time.sleep(1)
+      last_classified_image = image
 
+    # Challenge the classification (save it to directory, and upload it to Firestore)
+    elif key_press == ord('c'):
+      upload_to_fireStoreDB(last_classified_image)
+
+    # Stop the program if the ESC key is pressed.
+    elif key_press == 27:
+      break
 
     # Calculate the FPS
     if counter % _FPS_AVERAGE_FRAME_COUNT == 0:
@@ -131,14 +140,15 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
     cv2.putText(image, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
                 _FONT_SIZE, _TEXT_COLOR, _FONT_THICKNESS)
 
-    # Stop the program if the ESC key is pressed.
-    if cv2.waitKey(1) == 27:
-      break
 
     cv2.imshow('image_classification', image)
 
   cap.release()
   cv2.destroyAllWindows()
+
+def upload_to_fireStoreDB(image):
+  print("Uploading image to challenged Images DB")
+
 
 def write_out_image_to_classified_directory(image, category):
   path = f'./classified_images/{category}/'

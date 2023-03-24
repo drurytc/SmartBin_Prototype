@@ -24,6 +24,20 @@ from tflite_support.task import core
 from tflite_support.task import processor
 from tflite_support.task import vision
 
+import pyrebase
+
+firebaseConfig = {
+  "apiKey": "AIzaSyCH9NwRnsl5Sk54bW8umXpDU24PiJxDMcI",
+  "authDomain": "smart-recycling-bin-bbcaa.firebaseapp.com",
+  "projectId": "smart-recycling-bin-bbcaa",
+  "storageBucket": "smart-recycling-bin-bbcaa.appspot.com",
+  "messagingSenderId": "138334020999",
+  "appId": "1:138334020999:web:7d3bdbbb3ea858db96df22",
+  "measurementId": "G-GS39XK3H6S",
+  "serviceAccount": "privateKey.json",
+  "databaseURL": "https://smart-recycling-bin-bbcaa-default-rtdb.firebaseio.com/"
+}
+
 # Visualization parameters
 _ROW_SIZE = 20  # pixels
 _LEFT_MARGIN = 24  # pixels
@@ -54,6 +68,11 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   """
 
   model_path = f'./models/{model}'
+
+  # Initialize Database Connection
+  firebase = pyrebase.initialize_app(firebaseConfig)
+  storage = firebase.storage()
+
 
   # Initialize the image classification model
   base_options = core.BaseOptions(
@@ -134,7 +153,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       elif last_classified_image is last_challenged_image:
         print("Can not challenge the same image twice")
       else:
-          upload_to_fireStoreDB(last_classified_image, last_classified_image_category)
+          upload_to_fireStoreDB(last_classified_image, last_classified_image_category, storage)
           last_challenged_image = last_classified_image
       
 
@@ -159,8 +178,12 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   cap.release()
   cv2.destroyAllWindows()
 
-def upload_to_fireStoreDB(image, category):
-  print("Uploading image to challenged Images DB")
+
+def upload_to_fireStoreDB(image, category, storage):
+  print("Uploading Challenged Image to Database")
+  cv2.imwrite(category + ".jpg", image)
+  storage.child(category + ".jpg").put(category + ".jpg")
+
 
 
 def write_out_image_to_classified_directory(image, category):

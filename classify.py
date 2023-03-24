@@ -34,7 +34,7 @@ firebaseConfig = {
   "messagingSenderId": "138334020999",
   "appId": "1:138334020999:web:7d3bdbbb3ea858db96df22",
   "measurementId": "G-GS39XK3H6S",
-  "serviceAccount": "privateKey.json",
+  "serviceAccount": "DELETEME.json",
   "databaseURL": "https://smart-recycling-bin-bbcaa-default-rtdb.firebaseio.com/"
 }
 

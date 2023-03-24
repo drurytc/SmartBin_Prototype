@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smart-recycling-bin-bbcaa",
+  "private_key_id": "4f81d8802d1a7999f1452c5da662cf5e92ff1290",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCq49YO8ciLsJgS\nMpiCFOjZs+leI75jwAekkXvyrVKN6IVqCpXN48LkpAiT3RcGJpJoMRa2JOEXWmsZ\nceokBTc0PmImW/AiSZZYS3coHtcGTzjNU1txhC9eIJIf9rcmU6gHotOoKEvihFZK\ngPxKazsDrGwBXX6qndaDHLXJc1wr3mQ3z00/prullfoRagX/Klp5VcWkvdbbATFd\nYFANEQ7HBUuTvJ1pAmIuU+JGFM//Q98ycJ2JsWYDwrfOkDHzK918MYzIl9wtVppJ\nQGLsnvTKY6Ck8ZxebGmFFPlsDbw6USq+oQhGhtjyRLRKgbXFCihT319/g6oNQmh1\n26IgcCgFAgMBAAECggEAKDR1wGrYkqrfwEpIkLQwK0X1delFagz8D1cOGQR3m3z0\n5IOshnXbPLUt8nHN8KvC/sHr1Lsc/QRQFbq0Cjjy6bbymxE+0CZNeaT5mgYVcz3Q\nwJfnt++QQF472srOALWmXvOLRfEDF34omhs6IB0V05GtkG2pdyUu2oZ263gZW5Vy\nHnQZ/s20uztUn9JmTeGlogHGjjRrvHEaeXxCR8QkJq/I72XT2+eYbc+v79pbZ9vy\nS0GHOVNHVDpbOUQo10WmLAEZs6PFPfYQR3AHGsrHDpmdF8N+AvXGKR0k+B/PDKFx\nEt8XTksNvunU0I6p36o+GJLYUXRk+55K3e5E9PancQKBgQDqtVfUlFNPBW3tnMru\nPwYOls4sNsIBzKYZAJUXs1t0i2RMn6K9rMwtO4I2vNbXyU2uuWBsTZhYvqE8HFKp\nco/bmw5xdPgqHhW1kPdhZuuUzqFHqUBMx9Hkov1bYhacz4bMsMlFkl89YBIwtnTC\nv07oVY6rm3Pn9Qb7AAATOB/jkQKBgQC6ZG6bKwR3p8FpCVGoXiNmTVbfRnoVa6bT\n5dpriI1nR9qhu2ar+aLKRUXFmBa2FLl/g1bjkD4dpzG9DXS3WF4et3I75vgSbcUs\n1e7u3yGkp/j+Ysrt3OWJ2GDk3iHsPBkxERcT8vZw4XjUJ8LPHNMTSL557rveGp5Q\n9iTUcRnbNQKBgQCPleMmhJs2o46tp5cqC1pMQIve1pz3dthCQW30cuBHOyNgEOUB\nfp3mKhquG/afSmKAup23g/zoha6j1Hvpd9F0OraqSDGtqnwDeK0uZEVI4uQdr/hL\nQI8yfVfbuPU2d2ry/FAVhMdJB+X48RYbMeg3EGhYqaBNzkO3+DcTiulPUQKBgQCp\nM+SoXYunp5TO6hPDuPl/s/OJqmvHKDuAnmcCOSrMOBFDwmA4+9wIrIvjDOaJEhU2\nqR7mY5nPx2hCi4WJruF6FuPPdyN5b0aQJgDJvarH02gYXcyD04RX9yI2gWPgFMp1\nnWMKzANlg3jxdsrEwxDlr6KiA9Ntk1Jmgpv6clWbhQKBgQCUNJqtWsJ5GZx33tcp\neZ4qw6pKznsl8fZuq9wAhIqOeZC93EFQdcrNsOLFKZARmFkjX1rSW+vMSxrx9ZcV\nifsUXhwo35ahUaNcAwP7jxRfRi9JvN6ddXwwtvjjYzFRLA3bDBjUjgTEhp7rAB0N\np/APlhtZiXuVRtF5ZALYNHDzDw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-thbny@smart-recycling-bin-bbcaa.iam.gserviceaccount.com",
+  "client_id": "102532676951445516097",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-thbny%40smart-recycling-bin-bbcaa.iam.gserviceaccount.com"
+}

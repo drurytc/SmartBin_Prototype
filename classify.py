@@ -140,6 +140,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
         time.sleep(4)
         print("LOCKED")
       else:
+        category_name = "nonRecyclable"
         print("NOT RECYCLEABLE. If this is incorrect, press the challenge button (c)")
         time.sleep(1)
 

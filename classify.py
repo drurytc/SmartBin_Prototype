@@ -206,7 +206,7 @@ def main():
       '--model',
       help='Name of image classification model.',
       required=False,
-      default='mobilenet_v2.tflite')
+      default='mobilenet_v2_psu_data.tflite')
   parser.add_argument(
       '--maxResults',
       help='Max of classification results.',

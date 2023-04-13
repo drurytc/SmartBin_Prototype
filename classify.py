@@ -18,6 +18,7 @@ import sys
 import time
 import threading
 import os
+import uuid
 
 import cv2
 from tflite_support.task import core
@@ -89,6 +90,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   # Variables to calculate FPS
   counter, fps = 0, 0
   start_time = time.time()
+  time_of_last_classification = 0
 
   # Start capturing video input from the camera
   cap = cv2.VideoCapture(camera_id)
@@ -137,6 +139,8 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
         if(save_images_on):
           write_out_image_to_classified_directory(image, category_name)
         print("UNLOCKED")
+        print(f"You are recycling {category_name} ({score * 100}% confidence) \
+              if this is incorrect, please press 'c' to submit the incorrect labelling for review")
         time.sleep(4)
         print("LOCKED")
       else:
@@ -182,8 +186,16 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
 
 def upload_to_fireStoreDB(image, category, storage):
   print("Uploading Challenged Image to Database")
-  cv2.imwrite(category + ".jpg", image)
-  storage.child(category + ".jpg").put(category + ".jpg")
+  image_name = str(uuid.uuid4()) + ".jpg"
+
+  path = f'challenged_images/{category}/{image_name}'
+
+  if not os.path.isdir(f'challenged_images/{category}/'): # Automatically creates a new directory for novel categories
+    os.mkdir(f'challenged_images/{category}/')
+
+  cv2.imwrite(path, image)
+  storage.child(path).put(path)
+  print("Image sucessfully uploaded to DB")
 
 
 

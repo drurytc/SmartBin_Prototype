@@ -131,6 +131,7 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
           _FONT_SIZE, _TEXT_COLOR, _FONT_THICKNESS)
 
+      # Decide to unlock or not
       if("nonRecyclable" not in category_name and score > _UNLOCK_THRESHOLD):
         cap.release()
         cap = cv2.VideoCapture(camera_id)
@@ -140,13 +141,14 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
           write_out_image_to_classified_directory(image, category_name)
         print("UNLOCKED")
         print(f"You are recycling {category_name} ({score * 100}% confidence) \
-              if this is incorrect, please press 'c' to submit the incorrect labelling for review")
+              \nIf this is incorrect, please press 'c' to submit the incorrect labelling for review")
         time.sleep(4)
         print("LOCKED")
       else:
         category_name = "nonRecyclable"
         print("NOT RECYCLEABLE. If this is incorrect, press the challenge button (c)")
         time.sleep(1)
+      
 
     # Challenge the classification (save it to directory, and upload it to Firestore)
     elif key_press == ord('c'):
@@ -190,14 +192,12 @@ def upload_to_fireStoreDB(image, category, storage):
 
   path = f'challenged_images/{category}/{image_name}'
 
-  if not os.path.isdir(f'challenged_images/{category}/'): # Automatically creates a new directory for novel categories
+  if not os.path.isdir(f'challenged_images/{category}/'): # Automatically create a new directory for novel categories
     os.mkdir(f'challenged_images/{category}/')
 
   cv2.imwrite(path, image)
   storage.child(path).put(path)
   print("Image sucessfully uploaded to DB")
-
-
 
 def write_out_image_to_classified_directory(image, category):
   path = f'./classified_images/{category}/'
@@ -218,7 +218,7 @@ def main():
       '--model',
       help='Name of image classification model.',
       required=False,
-      default='mobilenet_v2_psu_data.tflite')
+      default='mobilenet_v2_largest_custom_data-03_24_2023.tflite')
   parser.add_argument(
       '--maxResults',
       help='Max of classification results.',

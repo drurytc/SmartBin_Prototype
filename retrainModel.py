@@ -30,7 +30,7 @@ validation_data, test_data = rest_data.split(0.5)
 
 ''' 
 
-model_spec = 'efficientnet_lite4'
+model_spec = 'path/to/in_use_model'
 model = image_classifier.create(
   train_data, 
   validation_data=validation_data,

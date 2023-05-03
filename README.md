@@ -56,21 +56,6 @@ python3 -m venv ~/tflite
 source ~/tflite/bin/activate
 ```
 
-## Install the TensorFlow Lite runtime
-
-In this project, all you need from the TensorFlow Lite API is the `Interpreter`
-class. So instead of installing the large `tensorflow` package, we're using the
-much smaller `tflite_runtime` package.
-
-To install this on your Raspberry Pi, follow the instructions in the
-[Python quickstart](https://www.tensorflow.org/lite/guide/python#install_tensorflow_lite_for_python).
-
-You can install the TFLite runtime using this script.
-
-```
-sh setup.sh
-```
-
 # Run this script to install the required dependencies and download the TFLite models.
 
 ```

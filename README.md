@@ -56,28 +56,19 @@ python3 -m venv ~/tflite
 source ~/tflite/bin/activate
 ```
 
-Run this script to install the required dependencies and download the TFLite models.
+# Run this script to install the required dependencies and download the TFLite models.
 
 ```
 sh setup.sh
 ```
 
-## Run the example.
-***You do not need to do setup more than once. Start here if setup has already been done***
-Make sure you are in the correct virtual enviroment
-```
-source ~/tflite/bin/activate
-```
+## Run the example
 
-Finally, run the main script. 
 ```
 python3 run.py
 ```
 
-## Classify an image
-Place an object you would like to classify in the 
-
-## If you see an error running the sample:
+# If you see an error running the sample:
 ImportError: libcblas.so.3: cannot open shared object file: No such file or directory
 you can fix it by installing an OpenCV dependency that is missing on your Raspberry Pi.
 
@@ -89,8 +80,7 @@ sudo apt-get install libatlas-base-dev
     model to be used:
     *   The default value is `model.tflite`. The other models are in the models/ directory. 
 
-## To stop the classifier
-Press ESC when focused on the video stream.
+## To stop the classifier, press ESC.
 ## To exit the virtual enviroment run
 ```
 deactivate

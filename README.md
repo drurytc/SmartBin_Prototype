@@ -65,7 +65,7 @@ cd SampleImageClassification
 # Run this script to install the required dependencies and download the TFLite models.
 
 ```
-sh setup.sh
+sh [setup.sh](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/setup.sh)
 ```
 
 ## Run the example

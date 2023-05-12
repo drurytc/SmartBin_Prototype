@@ -62,13 +62,13 @@ git clone https://github.com/jakeengstrom3/SampleImageClassification.git
 cd SampleImageClassification
 ```
 
-# Run this script to install the required dependencies and download the TFLite models.
+## Run this [script](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/setup.sh) to install the required dependencies and download the TFLite models.
 
 ```
-sh [setup.sh](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/setup.sh)
+sh setup.sh
 ```
 
-## Run the example
+## Run the [example](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/run.py) 
 
 ```
 python3 run.py

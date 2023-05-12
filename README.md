@@ -91,3 +91,13 @@ sudo apt-get install libatlas-base-dev
 ```
 deactivate
 ```
+## To Retrain the model on new data
+Head over to this Google Collab (public access).
+```
+https://colab.research.google.com/drive/17hy3TuT37Ua-ai9njKngECdYpVkJQ2mH#scrollTo=VTniC8nkCOmq
+```
+Load in (only) verified images from the project's cloud storage (https://console.cloud.google.com/storage/browser/smart-recycling-bin-bbcaa.appspot.com)
+
+Once you have a zipped file called Recyclables.zip loaded into Collab's files under /content/ (instructions for this are in the collab):
+Press ctrl+F9 to run the collab. This will create a new model, and download it to your local computer. 
+Once you have the new model, either add it to the /models folder, and use the --model option to choose the new model, or replace the default_model.

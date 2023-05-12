@@ -56,6 +56,12 @@ python3 -m venv ~/tflite
 source ~/tflite/bin/activate
 ```
 
+***Clone this repository***
+```
+git clone https://github.com/jakeengstrom3/SampleImageClassification.git
+cd SampleImageClassification
+```
+
 # Run this script to install the required dependencies and download the TFLite models.
 
 ```

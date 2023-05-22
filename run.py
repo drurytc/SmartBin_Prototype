@@ -22,7 +22,7 @@ firebaseConfig = {
   "messagingSenderId": "138334020999",
   "appId": "1:138334020999:web:7d3bdbbb3ea858db96df22",
   "measurementId": "G-GS39XK3H6S",
-  "serviceAccount": "DELETEME.json",
+  "serviceAccount": "private.json",
   "databaseURL": "https://smart-recycling-bin-bbcaa-default-rtdb.firebaseio.com/"
 }
 
@@ -33,27 +33,21 @@ _TEXT_COLOR = (0, 0, 255)  # red
 _FONT_SIZE = 3
 _FONT_THICKNESS = 1
 _FPS_AVERAGE_FRAME_COUNT = 10
+_FRAME_WIDTH = 800
+_FRAME_HEIGHT = 800
 
 # Bin Parameters
 _UNLOCK_THRESHOLD = 0.6
 _TIME_FOR_CHALLENGING = 10
 time_of_last_classification = 0
 
+# Classification Model Parameters
+_MAX_RESULTS = 3
+_SCORE_THRESHOLD = 0.20
+_NUM_THREADS = 4
+_CAMERA_ID = 0
 
-def run(model: str, max_results: int, score_threshold: float, num_threads: int,
-        enable_edgetpu: bool, camera_id: int, width: int, height: int, save_images_on: bool) -> None:
-  """Continuously run inference on images acquired from the camera.
-
-  Args:
-      model: Name of the TFLite image classification model.
-      max_results: Max of classification results.
-      score_threshold: The score threshold of classification results.
-      num_threads: Number of CPU threads to run the model.
-      enable_edgetpu: Whether to run the model on EdgeTPU.
-      camera_id: The camera id to be passed to OpenCV.
-      width: The width of the frame captured from the camera.
-      height: The height of the frame captured from the camera.
-  """
+def run(model: str, save_images_on: bool) -> None:
 
   model_path = f'./models/{model}'
 
@@ -61,14 +55,13 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   firebase = pyrebase.initialize_app(firebaseConfig)
   storage = firebase.storage()
 
-
   # Initialize the image classification model
   base_options = core.BaseOptions(
-      file_name=model_path, use_coral=enable_edgetpu, num_threads=num_threads)
+      file_name=model_path, use_coral=False, num_threads=_NUM_THREADS)
 
   # Enable Coral by this setting
   classification_options = processor.ClassificationOptions(
-      max_results=max_results, score_threshold=score_threshold)
+      max_results=_MAX_RESULTS, score_threshold=_SCORE_THRESHOLD)
   options = vision.ImageClassifierOptions(
       base_options=base_options, classification_options=classification_options)
 
@@ -80,9 +73,9 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
   time_of_last_classification = 0
 
   # Start capturing video input from the camera
-  cap = cv2.VideoCapture(camera_id)
-  cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+  cap = cv2.VideoCapture(_CAMERA_ID)
+  cap.set(cv2.CAP_PROP_FRAME_WIDTH, _FRAME_WIDTH)
+  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, _FRAME_HEIGHT)
 
   last_challenged_image = None # quick fix for variable used before assignemt error
   # Continuously capture images from the camera and run inference
@@ -121,9 +114,9 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
       # Decide to unlock or not
       if("nonRecyclable" not in category_name and score > _UNLOCK_THRESHOLD):
         cap.release()
-        cap = cv2.VideoCapture(camera_id)
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+        cap = cv2.VideoCapture(_CAMERA_ID)
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, _FRAME_WIDTH)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, _FRAME_HEIGHT)
         if(save_images_on):
           write_out_image_to_classified_directory(image, category_name)
         print("UNLOCKED")
@@ -136,7 +129,6 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
         print("NOT RECYCLEABLE. If this is incorrect, press the challenge button (c)")
         time.sleep(1)
       
-
     # Challenge the classification (save it to directory, and upload it to Firestore)
     elif key_press == ord('c'):
       # Gives 10 seconds to challenge the image
@@ -150,7 +142,6 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
           upload_to_fireStoreDB(last_classified_image, last_classified_image_category, storage)
           last_challenged_image = last_classified_image
       
-
     # Stop the program if the ESC key is pressed.
     elif key_press == 27:
       break
@@ -166,12 +157,10 @@ def run(model: str, max_results: int, score_threshold: float, num_threads: int,
     cv2.putText(image, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
                 _FONT_SIZE, _TEXT_COLOR, _FONT_THICKNESS)
 
-
     cv2.imshow('image_classification', image)
 
   cap.release()
   cv2.destroyAllWindows()
-
 
 def upload_to_fireStoreDB(image, category, storage):
   print("Uploading Challenged Image to Database")
@@ -196,7 +185,6 @@ def write_out_image_to_classified_directory(image, category):
   print(f'saving image named {name}, to {path}')
   cv2.imwrite(os.path.join(path , name), image)
 
-
 def main():
 
   parser = argparse.ArgumentParser(
@@ -207,40 +195,6 @@ def main():
       required=False,
       default='default_model.tflite')
   parser.add_argument(
-      '--maxResults',
-      help='Max of classification results.',
-      required=False,
-      default=3)
-  parser.add_argument(
-      '--scoreThreshold',
-      help='The score threshold of classification results.',
-      required=False,
-      type=float,
-      default=0.2)
-  parser.add_argument(
-      '--numThreads',
-      help='Number of CPU threads to run the model.',
-      required=False,
-      default=4)
-  parser.add_argument(
-      '--enableEdgeTPU',
-      help='Whether to run the model on EdgeTPU.',
-      action='store_true',
-      required=False,
-      default=False)
-  parser.add_argument(
-      '--cameraId', help='Id of camera.', required=False, default=0)
-  parser.add_argument(
-      '--frameWidth',
-      help='Width of frame to capture from camera.',
-      required=False,
-      default=1280)
-  parser.add_argument(
-      '--frameHeight',
-      help='Height of frame to capture from camera.',
-      required=False,
-      default=960)
-  parser.add_argument(
     '--saveImages', 
     help= 'Optionally save classified images in local dataset',
     action='store_true',
@@ -248,10 +202,7 @@ def main():
     default=False)
   args = parser.parse_args()
 
-  run(args.model, int(args.maxResults),
-      args.scoreThreshold, int(args.numThreads), bool(args.enableEdgeTPU),
-      int(args.cameraId), args.frameWidth, args.frameHeight, bool(args.saveImages))
-
+  run(args.model, bool(args.saveImages))
 
 if __name__ == '__main__':
   main()

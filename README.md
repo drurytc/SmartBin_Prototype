@@ -18,6 +18,13 @@ to the Raspberry Pi. It's okay if you're using SSH to access the Pi shell
 attached to the Pi to see the camera stream. The UNLOCK/LOCK decision is printed to
 the terminal, as well as the challenged image upload aknowledgement. 
 
+
+(Optional) connect LEDs to represent the state of the UNLOCK/LOCK desicions
+
+You will need one 4 RGB LED, three MtF jumper wires, three resistors, and a breadboard.
+If the item is deemed recyclable, the LED pin will light green, if not, it will light red.
+follow this tutorial: https://www.youtube.com/watch?v=sCYMENrtjiI 
+
 ## Set Up virtual Enviroment
 
 Once the PI is up and running, open the termial, and enter the follow commands:

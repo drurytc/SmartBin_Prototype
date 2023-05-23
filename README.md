@@ -68,7 +68,7 @@ cd SampleImageClassification
 sh setup.sh
 ```
 
-***if accessing your Pi remotely, run his command
+if accessing your Pi remotely, run his command
 ```
 export DISPLAY=:0.0
 ```

@@ -23,7 +23,7 @@ the terminal, as well as the challenged image upload aknowledgement.
 
 You will need one 4 RGB LED, three MtF jumper wires, three resistors, and a breadboard.
 If the item is deemed recyclable, the LED pin will light green, if not, it will light red.
-follow this tutorial: https://www.youtube.com/watch?v=sCYMENrtjiI 
+follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI) 
 
 ## Set Up virtual Enviroment
 

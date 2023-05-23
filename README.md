@@ -51,30 +51,28 @@ Create a Python virtual environment for the TFLite samples (optional but strongl
 python3 -m venv ~/tflite
 ```
 
-***Run this command whenever you open a new Terminal window/tab to activate the environment.***
-```
-source ~/tflite/bin/activate
-```
-
 ***Clone this repository***
 ```
 git clone https://github.com/jakeengstrom3/SampleImageClassification.git
 cd SampleImageClassification
 ```
 
-## Run this [script](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/setup.sh) to install the required dependencies and download the TFLite models.
+***Activate the virtual enviroment. Run this command every time you open a new terminal or restart the PI.***
+```
+source ~/tflite/bin/activate
+```
 
+***Run this [script](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/setup.sh) to install the required dependencies.***
 ```
 sh setup.sh
 ```
 
-if accessing your Pi remotely, run this command
+***If accessing your Pi remotely, run this command***
 ```
 export DISPLAY=:0.0
 ```
 
 ## Run the [classifier](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/run.py) 
-
 ```
 python3 run.py
 ```
@@ -83,7 +81,6 @@ A new window will appear with the camera stream being displayed. Use this window
 # If you see an error running the sample:
 ImportError: libcblas.so.3: cannot open shared object file: No such file or directory
 you can fix it by installing an OpenCV dependency that is missing on your Raspberry Pi.
-
 ```
 sudo apt-get install libatlas-base-dev
 ```

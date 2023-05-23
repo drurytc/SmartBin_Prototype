@@ -12,20 +12,11 @@ from tflite_support.task import core
 from tflite_support.task import processor
 from tflite_support.task import vision
 
-import pyrebase
+from firebase_admin import credentials, initialize_app, storage
 
-firebaseConfig = {
-  "apiKey": "AIzaSyCH9NwRnsl5Sk54bW8umXpDU24PiJxDMcI",
-  "authDomain": "smart-recycling-bin-bbcaa.firebaseapp.com",
-  "projectId": "smart-recycling-bin-bbcaa",
-  "storageBucket": "smart-recycling-bin-bbcaa.appspot.com",
-  "messagingSenderId": "138334020999",
-  "appId": "1:138334020999:web:7d3bdbbb3ea858db96df22",
-  "measurementId": "G-GS39XK3H6S",
-  "serviceAccount": "private.json",
-  "databaseURL": "https://smart-recycling-bin-bbcaa-default-rtdb.firebaseio.com/"
-}
-
+cred = credentials.Certificate("private.json")
+initialize_app(cred, {'storageBucket': 'smart-recycling-bin-bbcaa.appspot.com'})
+bucket = storage.bucket()
 # Visualization parameters
 _ROW_SIZE = 20  # pixels
 _LEFT_MARGIN = 24  # pixels
@@ -51,9 +42,6 @@ def run(model: str, save_images_on: bool) -> None:
 
   model_path = f'./models/{model}'
 
-  # Initialize Database Connection
-  firebase = pyrebase.initialize_app(firebaseConfig)
-  storage = firebase.storage()
 
   # Initialize the image classification model
   base_options = core.BaseOptions(
@@ -172,7 +160,8 @@ def upload_to_fireStoreDB(image, category, storage):
     os.mkdir(f'challenged_images/{category}/')
 
   cv2.imwrite(path, image)
-  storage.child(path).put(path)
+  blob = bucket.blob(path)
+  blob.upload_from_filename(path)
   print("Image sucessfully uploaded to DB")
 
 def write_out_image_to_classified_directory(image, category):

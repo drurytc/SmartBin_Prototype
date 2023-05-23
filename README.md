@@ -68,6 +68,11 @@ cd SampleImageClassification
 sh setup.sh
 ```
 
+***if accessing your Pi remotely, run his command
+```
+export DISPLAY=:0.0
+```
+
 ## Run the [script](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/run.py) 
 
 ```

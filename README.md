@@ -68,11 +68,12 @@ cd SampleImageClassification
 sh setup.sh
 ```
 
-## Run the [example](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/run.py) 
+## Run the [script](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/run.py) 
 
 ```
 python3 run.py
 ```
+A new window will appear with the camera stream being displayed. Use this window to ensure the camera can see the recyclable object. Hold recyclable object in front of the attached camera. Press the spacebar to take a picture of the object. The controller will then display in the terminal if the bin is to be unlocked or not. If you beleive the object is not properly classified, press 'c' to upload the incorrectly classified image to the project's cloud storage, lcoated [here](https://console.cloud.google.com/storage/browser/smart-recycling-bin-bbcaa.appspot.com;tab=objects). See the retraining section of the readme for more.
 
 # If you see an error running the sample:
 ImportError: libcblas.so.3: cannot open shared object file: No such file or directory
@@ -86,8 +87,6 @@ sudo apt-get install libatlas-base-dev
     model to be used:
     *   The default value is `model.tflite`. The other models are in the models/ directory. 
 
-## To run the classifier:
-Hold recyclable object in front of the attached camera, and press space. The controller will then display in the terminal if the bin is to be recycled or not. If the object is not properly classified, press 'c' to upload the incorrectly classified image to the project's cloud storage. 
 
 ## To stop the classifier, press ESC.
 ## To exit the virtual enviroment run

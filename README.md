@@ -99,14 +99,11 @@ Head over to this Google Collab (public access).
 ```
 https://colab.research.google.com/drive/17hy3TuT37Ua-ai9njKngECdYpVkJQ2mH#scrollTo=VTniC8nkCOmq
 ```
-Load in (only) verified images from the project's cloud storage (https://console.cloud.google.com/storage/browser/smart-recycling-bin-bbcaa.appspot.com)
+Load in (only) verified images from the project's cloud storage (https://console.cloud.google.com/storage/browser/smart-recycling-bin-bbcaa.appspot.com). The new data is located in the verified_images folder, and the base dataset (in case the new data is insufficient) is located in the Recyclables folder. 
 
 Once you have a zipped file called Recyclables.zip loaded into Colab's files under /content/ (instructions for this are in the collab):
 Press ctrl+F9 to run the collab. This will create a new model, and download it to your local computer. 
 Once you have the new model, either add it to the /models folder, and use the --model option to choose the new model, or replace the default_model.tflite to make the retrained model the new default (recommened). 
 
 A sample Recyclables folder (the one that will be compresses into a zip file) is given in the repository, but for the future additions to Recyclables.zip, it should be formatted to have separate sub-folders named with the classification of the objects inside (a plastic folder should contain images of plastic recyclables)
-
-
-# Retraining
 

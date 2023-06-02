@@ -143,3 +143,9 @@ A sample Recyclables folder (the one that will be compresses into a zip file) is
 
 ## End-to-End System Diagram
 ![alt text](https://github.com/jakeengstrom3/SmartBin/blob/master/Project_Diagram.png?raw=true)
+
+Here is a diagram of the end-to-end system we completed. Starting on the left, a usb camera attached to a Raspberry Pi captures an image of the presented object upon button push (spacebar on the keyboard). The user is then altered of the decision made by the Raspberry PI (unlock or remain locked) with an LED, and the motor will either swivel to the left (recycle) or the right (trash).  
+If the user believes the PI is wrong, they can push a separate button to send that image with the supposedly improper label to the cloud storage. This is hosted by a Google Cloud project’s ‘cloud storage’. Then, when enough new images have been uploaded (~1000), a maintainer of the project will need to manually sort the improperly labeled images into a new dataset. 
+To do that, a user with admin access goes to the cloud console home page (linked in the github readme), and select ‘Cloud Storage>Buckets’ from the navigation menu. Then you would drag and drop the images from their folders in the ‘challenged_images’ directory to the proper folder in the ‘verified_images’ directory. (Note: this step is represented visually as a mobile app in the diagram, which we have not implemented). 
+That new dataset can then be downloaded, and used in Google Colab to retrain the model, and improve its accuracy. The new model can then be manually loaded onto the PI, and used. The categories that the bin recognizes is based on the name of the folders in the dataset. This means that if you wanted to add a new category of recyclable, all you would need to do is retrain the model using a dataset that contains examples of that recyclable in its own folder. 
+

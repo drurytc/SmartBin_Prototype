@@ -1,8 +1,6 @@
-# TensorFlow Lite Python image classification example with Raspberry Pi.
+# Smart Recycling Bin
 
-This example uses [TensorFlow Lite](https://tensorflow.org/lite) with Python
-on a Raspberry Pi to perform real-time image classification using images
-taken from the camera.
+This is the software used to control the smart recycling bin. This project uses a custom trained TensorflowLite model to classify objects as recycleable or non-recycleable, then send a singal to a motor which swivels the bin's lid to the left (recycleable) or the right (trash). If the user believes the bin is wrong, they can challenge the bin, and send the image to cloud storage, where a project mainianter can verify the challenged images and create a new dataset to retrain the bin.
 
 ## Set up your hardware
 

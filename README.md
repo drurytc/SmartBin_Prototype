@@ -142,4 +142,4 @@ Once you have the new model, either add it to the /models folder, and use the --
 A sample Recyclables folder (the one that will be compresses into a zip file) is already included in the cloud storage, but for the future additions to Recyclables.zip, it should be formatted to have separate sub-folders named with the classification of the objects inside (a plastic folder should contain images of plastic recyclables)
 
 ## End-to-End System Diagram
-![alt text](https://github.com/jakeengstrom3/SmartBin/blob/main/Project_Diagram.png?raw=true)
+![alt text](https://github.com/jakeengstrom3/SmartBin/blob/master/Project_Diagram.png?raw=true)

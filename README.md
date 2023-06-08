@@ -17,9 +17,22 @@ the terminal, as well as the challenged image upload aknowledgement.
 
 (Optional) connect LEDs to represent the state of the UNLOCK/LOCK desicions
 
-You will need one 4 RGB LED, three MtF jumper wires, three resistors, and a breadboard.
+You will need one 4 RGB LED, four MtF jumper wires, three resistors, and a breadboard.
 If the item is deemed recyclable, the LED pin will light green, if not, it will light red.
-follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI)
+
+![raspi_gpio_LED](https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_LED.JPG?raw=true)
+I used pin 9 for grounding and pins 11, 13, and 15 for the LED's after connecting them with resistors. 
+You can follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI) for more instructions. 
+
+
+(Optional) connect Servo to represent the state of the UNLOCK/LOCK desicions
+
+You will need one servo and 3 MtF jumper wires.
+If the item is deemed recyclable, the servo will soin 90 degress, if not, it will spin -90 degrees.
+
+![raspi_gpio_servo](https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_servo.JPG?raw=true)
+I used pin 4 for power supply, pin 6 for grounding and pin 12 for connecting. 
+You can follow this [tutorial]([https://www.youtube.com/watch?v=sCYMENrtjiI](https://www.youtube.com/watch?v=40tZQPd3z8g)) for more instructions. 
 
 ## Set Up virtual Enviroment
 

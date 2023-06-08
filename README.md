@@ -39,6 +39,7 @@ If the item is deemed recyclable, the servo will soin 90 degress, if not, it wil
 I used pin 4 for power supply, pin 6 for grounding and pin 12 for connecting. 
 You can follow this [tutorial](https://www.youtube.com/watch?v=40tZQPd3z8g) for more instructions. 
 
+[*original image source](https://www.elektronik-kompendium.de/sites/raspberry-pi/1907101.htm)
 ## Set Up virtual Enviroment
 
 Once the PI is up and running, open the termial, and enter the follow commands:

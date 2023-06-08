@@ -15,7 +15,8 @@ to the Raspberry Pi. It's okay if you're using SSH to access the Pi shell
 attached to the Pi to see the camera stream. The UNLOCK/LOCK decision is printed to
 the terminal, as well as the challenged image upload aknowledgement.
 
-(Optional) connect LEDs to represent the state of the UNLOCK/LOCK desicions
+
+(OPTIONAL) connect LEDs to represent the state of the UNLOCK/LOCK desicions
 
 You will need one 4 RGB LED, four MtF jumper wires, three resistors, and a breadboard.
 If the item is deemed recyclable, the LED pin will light green, if not, it will light red.
@@ -26,7 +27,8 @@ I used pin 9 for grounding and pins 11, 13, and 15 for the LED's after connectin
 You can follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI) for more instructions. 
 
 
-(Optional) connect Servo to represent the state of the UNLOCK/LOCK desicions
+
+(OPTIONAL) connect Servo to represent the state of the UNLOCK/LOCK desicions
 
 You will need one servo and 3 MtF jumper wires.
 If the item is deemed recyclable, the servo will soin 90 degress, if not, it will spin -90 degrees.

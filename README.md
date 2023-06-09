@@ -115,10 +115,10 @@ export DISPLAY=:0.0
 python3 run.py
 ```
 
-***If you have the LED and servo connected, run the run_withhardware.py***
+***If you have the LED and servo connected, run the run_with_hardware.py***
 
 ```
-python3 run_withhardware.py
+python3 run_with_hardware.py
 ```
 
 A new window will appear with the camera stream being displayed. Use this window to ensure the camera can see the recyclable object. Hold recyclable object in front of the attached camera. Press the spacebar to take a picture of the object. The controller will then display in the terminal if the bin is to be unlocked or not. If you beleive the object is not properly classified, press 'c' to upload the incorrectly classified image to the project's cloud storage, lcoated [here](https://console.cloud.google.com/storage/browser/smart-recycling-bin-bbcaa.appspot.com;tab=objects). See the retraining section of the readme for more.

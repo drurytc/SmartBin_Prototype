@@ -15,12 +15,31 @@ to the Raspberry Pi. It's okay if you're using SSH to access the Pi shell
 attached to the Pi to see the camera stream. The UNLOCK/LOCK decision is printed to
 the terminal, as well as the challenged image upload aknowledgement.
 
+<br/><br/>
+
 (Optional) connect LEDs to represent the state of the UNLOCK/LOCK desicions
 
-You will need one 4 RGB LED, three MtF jumper wires, three resistors, and a breadboard.
+You will need one 4 RGB LED, four MtF jumper wires, three resistors, and a breadboard.
 If the item is deemed recyclable, the LED pin will light green, if not, it will light red.
-follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI)
 
+<img src="https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_LED.JPG" width="30%" height="30%">
+
+I used pin 9 for grounding and pins 11, 13, and 15 for the LED's after connecting them with resistors. 
+You can follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI) for more instructions. 
+
+<br/><br/>
+
+(Optional) connect Servo to represent the state of the UNLOCK/LOCK desicions
+
+You will need one servo and 3 MtF jumper wires.
+If the item is deemed recyclable, the servo will soin 90 degress, if not, it will spin -90 degrees.
+
+<img src="https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_servo.JPG" width="30%" height="30%">
+
+I used pin 4 for power supply, pin 6 for grounding and pin 12 for connecting. 
+You can follow this [tutorial](https://www.youtube.com/watch?v=40tZQPd3z8g) for more instructions. 
+
+[*original image source](https://www.elektronik-kompendium.de/sites/raspberry-pi/1907101.htm)
 ## Set Up virtual Enviroment
 
 Once the PI is up and running, open the termial, and enter the follow commands:

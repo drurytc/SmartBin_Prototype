@@ -12,7 +12,7 @@ processing software models for waste sorting, providing valuable insights for th
 
 Building upon previous work, the project integrates image processing software with new sensors and actuators to utilize the sorting
 capabilities of the past capstone's software. The design process involves developing proof of concept for each subsystem of the bin,
-followed by integration into a cohesive mechanical design. Stakeholders include the project sponsor, Dr. Greg Fitzpatrick, and 
+followed by integration into a cohesive mechanical design. Stakeholders include the project sponsor, Greg Fitzpatrick, and 
 advisor, Dr. Layne Clemen, as well as the general public, institutions, and local businesses. New sensors include a motion sensor
 and IR break beam sensors, which are integrated to trigger functionality within the code. The sorting mechanism is controlled by a
 servo motor, with safety features such as a chute with a torsion spring door to prevent accidents. The torsion door also can be

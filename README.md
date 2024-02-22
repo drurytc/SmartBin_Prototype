@@ -45,79 +45,57 @@ locked when capacity is met by a latched servo motor. The design is proposed as 
 Before you begin, ensure you have set up your Raspberry Pi with Raspberry Pi OS, preferably updated to Buster. 
 Additionally, connect the necessary hardware components as outlined below:
 
-## Camera
+### Camera
 Connect the Arducam 4K 8MP IMX219 camera to any available USB port on the Raspberry Pi. This camera will 
 be used for capturing images for classification.
 
-## Sorting Servo Motor (DS3235-270)
+### Sorting Servo Motor (DS3235-270)
 - **Power Supply:** Connect the power wire of the DS3235-270 sorting servo motor to pin 2 (5V) on
 - the Raspberry Pi.
 - **Ground:** Connect the ground wire of the servo motor to pin 6 (ground) on the Raspberry Pi.
 - **Control Signal:** Connect the control wire of the servo motor to GPIO pin 17 on the Raspberry Pi.
 
-## Door Locking Servo Motor (SG90)
+### Door Locking Servo Motor (SG90)
 - **Power Supply:** Connect the power wire of the SG90 door locking servo motor to pin 4 (5V) on the Raspberry Pi.
 - **Ground:** Connect the ground wire of the servo motor to pin 6 (ground) on the Raspberry Pi.
 - **Control Signal:** Connect the control wire of the servo motor to GPIO pin 18 on the Raspberry Pi.
 
-## Item Sensor: PIR Motion Sensor
+### Item Sensor: PIR Motion Sensor
 - **Power Supply:** Connect the VCC (power) wire of the PIR motion sensor to pin 2 (5V) on the Raspberry Pi.
 - **Ground:** Connect the ground wire of the PIR motion sensor to pin 6 (ground) on the Raspberry Pi.
 - **Output Signal:** Connect the output wire of the PIR motion sensor to GPIO pin 4 on the Raspberry Pi.
 
-## Capacity Sensor: Break Beam
+### Capacity Sensor: Break Beam
 - **Emitter (Transmitter):** Connect the emitter wire of the break beam capacity sensor to GPIO pin 23 on
 -  the Raspberry Pi.
 - **Receiver:** Connect the receiver wire of the break beam capacity sensor to GPIO pin 24 on the Raspberry Pi.
 
-## Capacity LED: NeoPixel 8 Stick
+### Capacity LED: NeoPixel 8 Stick
 - **Power Supply:** Connect the VCC (power) wire of the NeoPixel 8 Stick LED to pin 2 (5V) on the Raspberry Pi.
 - **Ground:** Connect the ground wire of the LED to pin 6 (ground) on the Raspberry Pi.
 - **Data Input:** Connect the data input wire of the LED to GPIO pin 10 on the Raspberry Pi.
 
-## Camera LED: NeoPixel 8 Stick
+### Camera LED: NeoPixel 8 Stick
 - **Power Supply:** Connect the VCC (power) wire of the NeoPixel 8 Stick LED to pin 2 (5V) on the Raspberry Pi.
 - **Ground:** Connect the ground wire of the LED to pin 6 (ground) on the Raspberry Pi.
 - **Data Input:** Connect the data input wire of the LED to GPIO pin 9 on the Raspberry Pi.
 
-## Power Converter: Integrated within LiPo Battery
+### Power Converter: Integrated within LiPo Battery
 Ensure the power converter is integrated within the LiPo battery setup. This setup will provide power to the
 Raspberry Pi and other components.
 
-## Solar Panel: 20 Watt
+### Solar Panel: 20 Watt
 Connect the 20 Watt solar panel to the power converter setup. This panel will harness solar energy to recharge the LiPo battery.
 
-## Battery: LiPo
+### Battery: LiPo
 Ensure the LiPo battery is connected to the power converter setup. This battery will store energy from the solar panel
 for powering the smart recycling bin.
 
 Ensure all connections are secure and properly configured to enable the efficient operation of the smart recycling bin.
-
 <br/><br/>
-
-(Optional) connect LEDs to represent the state of the UNLOCK/LOCK desicions
-
-You will need one 4 RGB LED, four MtF jumper wires, three resistors, and a breadboard.
-If the item is deemed recyclable, the LED pin will light green, if not, it will light red.
-
 <img src="https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_LED.JPG" width="30%" height="30%">
-
-I used pin 9 for grounding and pins 11, 13, and 15 for the LED's after connecting them with resistors. 
-You can follow this [tutorial](https://www.youtube.com/watch?v=sCYMENrtjiI) for more instructions. 
-
 <br/><br/>
 
-(Optional) connect Servo to represent the state of the UNLOCK/LOCK desicions
-
-You will need one servo and 3 MtF jumper wires.
-If the item is deemed recyclable, the servo will soin 90 degress, if not, it will spin -90 degrees.
-
-<img src="https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_servo.JPG" width="30%" height="30%">
-
-I used pin 4 for power supply, pin 6 for grounding and pin 12 for connecting. 
-You can follow this [tutorial](https://www.youtube.com/watch?v=40tZQPd3z8g) for more instructions. 
-
-[*original image source](https://www.elektronik-kompendium.de/sites/raspberry-pi/1907101.htm)
 ## Set Up virtual Enviroment
 
 Once the PI is up and running, open the termial, and enter the follow commands:

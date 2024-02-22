@@ -167,13 +167,13 @@ export DISPLAY=:0.0
 
 ## Running from Command Line Interface
 
-#Run the classifier without hardware
+***Run the classifier without hardware
 
 ```
 python3 run.py
 ```
 
-#All hardware connected, run the run_physical.py
+***All hardware connected
 
 ```
 python3 run_physical.py

@@ -143,7 +143,7 @@ source ~/tflite/bin/activate
 ***Clone this repository***
 
 ```
-git clone https://github.com/jakeengstrom3/SampleImageClassification.git
+git clone https://github.com/drurytc/SmartBin_Prototype.git
 cd SampleImageClassification
 ```
 
@@ -153,7 +153,7 @@ cd SampleImageClassification
 source ~/tflite/bin/activate
 ```
 
-***Run this [script](https://github.com/jakeengstrom3/SampleImageClassification/blob/master/setup.sh) to install the required dependencies.***
+***Run the following to install the required dependencies.***
 
 ```
 sh setup.sh
@@ -167,13 +167,13 @@ export DISPLAY=:0.0
 
 ## Running from Command Line Interface
 
-***Run the classifier without hardware
+***Run the classifier without hardware***
 
 ```
 python3 run.py
 ```
 
-***All hardware connected
+***All hardware connected***
 
 ```
 python3 run_physical.py

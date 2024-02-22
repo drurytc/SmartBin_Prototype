@@ -93,7 +93,7 @@ for powering the smart recycling bin.
 
 Ensure all connections are secure and properly configured to enable the efficient operation of the smart recycling bin.
 <br/><br/>
-<img src="https://github.com/jakeengstrom3/SmartBin/blob/master/raspi_gpio_LED.JPG" width="30%" height="30%">
+<img src="https://github.com/drurytc/SmartBin_Prototype/raw/main/yourdirectory/GPIO%20Pins.png" width="30%" height="30%">
 <br/><br/>
 
 ## Set Up virtual Enviroment

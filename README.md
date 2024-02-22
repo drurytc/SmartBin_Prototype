@@ -1,5 +1,5 @@
 
-# Smart Recycling Bin
+# Smart Recycling Bin - Physical Prototype
 
 ## Introduction
 

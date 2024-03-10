@@ -84,8 +84,8 @@ be used for capturing images for classification.
 Ensure the power converter is integrated within the LiPo battery setup. This setup will provide power to the
 Raspberry Pi and other components.
 
-### Solar Panel: 20 Watt
-Connect the 20 Watt solar panel to the power converter setup. This panel will harness solar energy to recharge the LiPo battery.
+### Solar Panel: 25 Watt
+Connect the 25 Watt solar panel to the power converter setup. This panel will harness solar energy to recharge the LiPo battery.
 
 ### Battery: LiPo
 Ensure the LiPo battery is connected to the power converter setup. This battery will store energy from the solar panel

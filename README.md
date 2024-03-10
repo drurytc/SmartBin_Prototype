@@ -38,7 +38,7 @@ locked when capacity is met by a latched servo motor. The design is proposed as 
 - **Capacity LED**: NeoPixel 8 Stick
 - **Camera LED**: NeoPixel 8 Stick
 - **Power Converter**: Integrated within LiPo Battery
-- **Solar Panel**: 20 Watt
+- **Solar Panel**: 25 Watt
 - **Battery**: LiPo
 
 ## Hardware Setup

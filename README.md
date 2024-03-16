@@ -38,7 +38,7 @@ locked when capacity is met by a latched servo motor. The design is proposed as 
 - **Capacity LED**: NeoPixel 8 Stick
 - **Camera LED**: NeoPixel 8 Stick
 - **Power Converter**: Integrated Waveshare Solar Power Manager
-- - **Solar Panel**: 25 Watt
+- **Solar Panel**: 25 Watt
 - **Battery**: 10000 mAh Rechargable Li-Po Battery
 
 ## Hardware Setup
@@ -46,7 +46,7 @@ Before you begin, ensure you have set up your Raspberry Pi with Raspberry Pi OS,
 Connect the necessary hardware components as outlined below:
 
 ### Camera
-Connect the Arducam 4K 8MP IMX219 camera to any available USB port on the Raspberry Pi. This camera will 
+- Connect the Arducam 4K 8MP IMX219 camera to any available USB port on the Raspberry Pi. This camera will 
 be used for capturing images for classification.
 
 ### Sorting Servo Motor (DS3235-270)
@@ -78,16 +78,16 @@ be used for capturing images for classification.
 - **Power Supply:** Connect the VCC (power) wire of the NeoPixel 8 Stick LED to other side of the Camera LED to chain the LEDs.
 - **Ground (x2):** Connect the two ground wires to other side of Camera LED to chain them.
 - **Data Input:** Connect the data input wire of the LED to GPIO pin 10 on the Raspberry Pi.
-- Note: Make sure the data and 5v wires are going to the right positions. It is written on the back of the LED.
+- **Note:** Make sure the data and 5v wires are going to the right positions. It is written on the back of the LED.
 
 ### Power Converter: Integrated within LiPo Battery
-Note: When charging the battery must be turned on. The USB-C can be used for input or output of power. In this setup use the USB-C for powering Raspberry Pi and the regular USB for powering the servo 5v-power and ground rails on the breadboard.
+- **Note:** When charging the battery must be turned on. The USB-C can be used for input or output of power. In this setup use the USB-C for powering Raspberry Pi and the regular USB for powering the servo 5v-power and ground rails on the breadboard.
 
 ### Solar Panel: 25 Watt
-Connect the 25 Watt solar panels red and black wires to teh barell connector for the solar power manager. Green light will indicate if solar charging is occurring.
+- **Note:** Connect the 25 Watt solar panels red and black wires to teh barell connector for the solar power manager. Green light will indicate if solar charging is occurring.
 
 ### Battery: LiPo
-Battery has power indicator with 4 LED lights to show capacity.
+- **Note:** Battery has power indicator with 4 LED lights to show capacity.
 
 Ensure all connections are secure and properly configured to enable the efficient operation of the smart recycling bin.
 

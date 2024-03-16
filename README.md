@@ -95,7 +95,7 @@ Ensure all connections are secure and properly configured to enable the efficien
 <br/><br/>
 We are using a break out pin extender so it looks slightly different.
 <br/><br/>
-<img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/GPIO_Pins.png" width="50%" height="50%">
+<img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/Breakout_Extender.jpg" width="50%" height="50%">
 <br/><br/>
 
 ## Set Up virtual Enviroment

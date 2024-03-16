@@ -136,26 +136,26 @@ Create a Python virtual environment for the TFLite samples (optional but strongl
 python3 -m venv ~/tflite
 ```
 
-***Clone this repository***
+Clone this repository
 
 ```
 git clone https://github.com/drurytc/SmartBin_Prototype.git
 cd SmartBin_Prototype
 ```
 
-***Activate the virtual enviroment. Run this command every time you open a new terminal or restart the PI.***
+Activate the virtual enviroment. Run this command every time you open a new terminal or restart the PI.
 
 ```
 source ~/tflite/bin/activate
 ```
 
-***Run the following to install the required dependencies.***
+Run the following to install the required dependencies.
 
 ```
 sh setup.sh
 ```
 
-***If accessing your Pi remotely, run this command***
+If accessing your Pi remotely, run this command:
 
 ```
 export DISPLAY=:0.0
@@ -177,7 +177,7 @@ python3 run_best_integ.py
 ```
 A new window will still appear with the camera stream being displayed when connected to the Pi. When an object is placed into the physical prototype through door, motion sensor will trigger camera capture and classify. This script has been setup to run on boot of the raspberry pi. 
 
-## Run from boot setup
+### Run from boot setup
 
 Run the following line in terminal to open user-level autostart information.
 

@@ -192,3 +192,6 @@ you can fix it by installing an OpenCV dependency that is missing on your Raspbe
 sudo apt-get install libatlas-base-dev
 ```
 
+## Previous Capstone
+
+https://github.com/jakeengstrom3/SmartBin.git

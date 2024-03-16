@@ -8,7 +8,7 @@ and event venues. By distinguishing between recyclable and non-recyclable items,
 and promote sustainable recycling practices. Additionally, previous capstone projects at Oregon State University have explored image
 processing software models for waste sorting, providing valuable insights for this project.
 
-## Design Process & Considerations
+## Design Process
 
 Building upon previous work, the project integrates image processing software with new sensors and actuators to utilize the sorting
 capabilities of the past capstone's software. The design process involves developing proof of concept for each subsystem of the bin,
@@ -98,7 +98,7 @@ We are using a break out pin extender so it looks slightly different.
 <img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/Breakout_Extender.jpg" width="50%" height="50%">
 <br/><br/>
 
-## Set Up virtual Enviroment
+## Software Setup
 
 Once the PI is up and running, open the termial, and enter the follow commands:
 
@@ -174,14 +174,35 @@ export DISPLAY=:0.0
 ```
 python3 run.py
 ```
+A new window will appear with the camera stream being displayed. Use this window to ensure the camera can see the recyclable object. Hold recyclable object in front of the attached camera. Press the spacebar to take a picture of the object. The controller will then display in the terminal if the bin is to be unlocked or not for the run.py.
 
 ***All hardware connected***
 
 ```
-python3 run_physical.py
+python3 run_best_integ.py
 ```
+A new window will still appear with the camera stream being displayed when connected to the Pi. When an object is placed into the physical prototype through door, motion sensor will trigger camera capture and classify. This script has been setup to run on boot of the raspberry pi. To set this up do the following: 
 
-A new window will appear with the camera stream being displayed. Use this window to ensure the camera can see the recyclable object. Hold recyclable object in front of the attached camera. Press the spacebar to take a picture of the object. The controller will then display in the terminal if the bin is to be unlocked or not for the run.py and nothing for run_physical.py. 
+Run the following line in terminal to open user-level autostart information.
+
+```
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+```
+Add the following to the end of the list of actions on autostart. After adding, follow directions at bottom of terminal, press crtl-X, Y, and Enter to save changes. 
+
+```
+@lxterminal
+```
+After saving this, the terminal window will automatically open when turning on the Pi. In order to run the script as well, edit another file called the bashrc. This file is in charge of what happens when a new terminal window opens. Run the following in the terminal to edit this file:
+
+```
+sudo nano ~/.bashrc 
+```
+Add the following lines to the end of the file of actions on autostart. After adding, follow directions at bottom of terminal, press crtl-X, Y, and Enter to save changes. 
+
+```
+cd
+```
 
 ## Error Troubleshooting 
 

@@ -99,7 +99,6 @@ We are using a break out pin extender so it looks slightly different.
 <br/><br/>
 
 ## Software Setup
-
 Once the PI is up and running, open the termial, and enter the follow commands:
 
 Show your Raspberry Pi OS version.
@@ -160,14 +159,14 @@ export DISPLAY=:0.0
 
 
 
-***Run the classifier without hardware***
+### Run the classifier without hardware
 
 ```
 python3 run.py
 ```
 A new window will appear with the camera stream being displayed. Use this window to ensure the camera can see the recyclable object. Hold recyclable object in front of the attached camera. Press the spacebar to take a picture of the object. The controller will then display in the terminal if the bin is to be unlocked or not for the run.py.
 
-***All hardware connected***
+### All hardware connected
 
 ```
 python3 run_best_integ.py

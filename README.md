@@ -50,28 +50,27 @@ Connect the necessary hardware components as outlined below:
 be used for capturing images for classification.
 
 ### Sorting Servo Motor (DS3235-270)
-- **Power Supply (Red):** Connect the power wire of the DS3235-270 sorting servo motor to pin 2 (5V) on
-- the Raspberry Pi.
-- **Ground (Brown):** Connect the ground wire of the servo motor to ground rail on breadboard or ground pin on Raspberry Pi.
+- **Power Supply (Red):** Connect the power wire of the DS3235-270 sorting servo motor to the servo 5v-power rail on breadboard.
+- **Ground (Brown):** Connect the ground wire of the servo motor to ground rail on breadboad.
 - **Control Signal (Orange):** Connect the control wire of the servo motor to GPIO pin 17 on the Raspberry Pi.
 
-### Door Locking Servo Motor (SG90)
-- **Power Supply (Red):** Connect the power wire of the SG90 door locking servo motor to pin 4 (5V) on the Raspberry Pi.
-- **Ground (Brown):** Connect the ground wire of the servo motor to pin 6 (ground) on the Raspberry Pi.
-- **Control Signal (Orange):** Connect the control wire of the servo motor to GPIO pin 18 on the Raspberry Pi.
+### Door Locking Servo Motor (Miuzei)
+- **Power Supply (Red):** Connect the power wire of Miuzei door locking servo motor to the servo 5v-power rail on breadboard.
+- **Ground (Brown):** Connect the ground wire of the servo motor to ground rail on breadboad.
+- **Control Signal (Orange):** Connect the control wire of the servo motor to GPIO pin 24 on the Raspberry Pi.
 
 ### Item Sensor: PIR Motion Sensor
-- **Power Supply (Left):** Connect the VCC (power) wire of the PIR motion sensor to pin 2 (5V) on the Raspberry Pi.
-- **Ground (Right):** Connect the ground wire of the PIR motion sensor to pin 6 (ground) on the Raspberry Pi.
+- **Power Supply (Left):** Connect the VCC (power) wire of the PIR motion sensor to the sensor 5v-power rail on breadboard.
+- **Ground (Right):** Connect the ground wire of the PIR motion sensor to ground rail on breadboad.
 - **Output Signal (Middle):** Connect the output wire of the PIR motion sensor to GPIO pin 4 on the Raspberry Pi.
 
-### Capacity Sensor: Break Beam
+### Capacity Sensor: IR Break Beam (x4)
 - **Transmitter:** Does not have to be connected to the Raspberry Pi directly just to the ground and 5v power rail setup in breadboard. Red and black wires are power and ground respectively.
-- **Receiver:** Connect the white output data wire to pin 6. Red and black wires are power and ground respectively.
+- **Receiver:** Connect the white output data wire to pins (5,6,13). Red and black wires are power and ground respectively.
 
 ### Camera LED: NeoPixel 8 Stick
-- **Power Supply:** Connect the VCC (power) wire of the NeoPixel 8 Stick LED to pin 2 (5V) on the Raspberry Pi.
-- **Ground (x2):** Connect the two ground wires of the LED to pin 6 (ground) on the Raspberry Pi.
+- **Power Supply:** Connect the VCC (power) wire of the NeoPixel 8 Stick LED to the sensor 5v-power rail on breadboard or directly to pi if easier.
+- **Ground (x2):** Connect the two ground wires of the LED to ground rail on breadboad.
 - **Data Input:** Connect the data input wire of the LED to GPIO pin 18 on the Raspberry Pi.
 
 ### Capacity LED: NeoPixel 8 Stick

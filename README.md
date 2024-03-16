@@ -136,17 +136,11 @@ Create a Python virtual environment for the TFLite samples (optional but strongl
 python3 -m venv ~/tflite
 ```
 
-***Run this command whenever you open a new Terminal window/tab to activate the environment.***
-
-```
-source ~/tflite/bin/activate
-```
-
 ***Clone this repository***
 
 ```
 git clone https://github.com/drurytc/SmartBin_Prototype.git
-cd SampleImageClassification
+cd SmartBin_Prototype
 ```
 
 ***Activate the virtual enviroment. Run this command every time you open a new terminal or restart the PI.***
@@ -167,7 +161,7 @@ sh setup.sh
 export DISPLAY=:0.0
 ```
 
-## Running from Command Line Interface
+
 
 ***Run the classifier without hardware***
 
@@ -181,7 +175,9 @@ A new window will appear with the camera stream being displayed. Use this window
 ```
 python3 run_best_integ.py
 ```
-A new window will still appear with the camera stream being displayed when connected to the Pi. When an object is placed into the physical prototype through door, motion sensor will trigger camera capture and classify. This script has been setup to run on boot of the raspberry pi. To set this up do the following: 
+A new window will still appear with the camera stream being displayed when connected to the Pi. When an object is placed into the physical prototype through door, motion sensor will trigger camera capture and classify. This script has been setup to run on boot of the raspberry pi. 
+
+## Run from boot setup
 
 Run the following line in terminal to open user-level autostart information.
 
@@ -201,8 +197,12 @@ sudo nano ~/.bashrc
 Add the following lines to the end of the file of actions on autostart. After adding, follow directions at bottom of terminal, press crtl-X, Y, and Enter to save changes. 
 
 ```
-cd
+source ~/tflite/bin/activate
+sleep 5
+cd SmartBin_Prototype
+sudo python3 run_best_integ.py
 ```
+Now whenever you open a terminal or turn on the pi the script will run.
 
 ## Error Troubleshooting 
 

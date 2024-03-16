@@ -23,7 +23,7 @@ locked when capacity is met by a latched servo motor. The design is proposed as 
 ### Software
 
 - **Image Classification**: Custom-trained TensorFlow Lite model
-- **Decision Making**: Rule-based system for lid control
+- **Decision Making**: Conditional Statements & Procedurial Functions
 - **Maintainer Interaction**: Command line interface (CLI)
 - **User Interface**: Visual LED Indicators & Physical Bin Interaction
 
@@ -89,12 +89,11 @@ be used for capturing images for classification.
 ### Battery: LiPo
 - **Note:** Battery has power indicator with 4 LED lights to show capacity.
 
-Ensure all connections are secure and properly configured to enable the efficient operation of the smart recycling bin.
-
-Here is the GPIO break down for pins on regular Raspberry Pi. We are using a break out pin extender so it looks slightly different.
+Ensure all connections are secure and properly configured to enable the efficient operation of the smart recycling bin. Here is the GPIO break down for pins on regular Raspberry Pi.
 <br/><br/>
 <img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/GPIO_Pins.png" width="50%" height="50%">
 <br/><br/>
+We are using a break out pin extender so it looks slightly different.
 <br/><br/>
 <img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/GPIO_Pins.png" width="50%" height="50%">
 <br/><br/>

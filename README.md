@@ -1,6 +1,8 @@
 
 # Smart Recycling Bin - Physical Prototype
 
+[<img src="https://img.youtube.com/vi/X6xwiXmtb-4/0.jpg" width="50%" height="50%">](https://youtu.be/X6xwiXmtb-4)
+
 ## Introduction
 
 The Smart Recycling Bin Prototype focuses on creating a solution for recycling contamination in public spaces like parks, airports, 

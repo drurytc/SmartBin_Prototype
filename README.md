@@ -168,7 +168,7 @@ A new window will appear with the camera stream being displayed. Use this window
 ### All hardware connected
 
 ```
-python3 run_best_integ.py
+sudo python3 run_best_integ.py
 ```
 A new window will still appear with the camera stream being displayed when connected to the Pi. When an object is placed into the physical prototype through door, motion sensor will trigger camera capture and classify. This script has been setup to run on boot of the raspberry pi. 
 

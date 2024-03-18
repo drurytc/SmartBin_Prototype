@@ -211,3 +211,7 @@ sudo apt-get install libatlas-base-dev
 ## Previous Capstone
 
 https://github.com/jakeengstrom3/SmartBin.git
+
+## ROS (Robotic Operating System) Extenstion Project
+
+https://github.com/drurytc/ROB599_Project.git

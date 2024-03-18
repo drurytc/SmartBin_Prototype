@@ -83,7 +83,7 @@ be used for capturing images for classification.
 - **Note:** When charging the battery must be turned on. The USB-C can be used for input or output of power. In this setup use the USB-C for powering Raspberry Pi and the regular USB for powering the servo 5v-power and ground rails on the breadboard.
 
 ### Solar Panel: 25 Watt
-- **Note:** Connect the 25 Watt solar panels red and black wires to teh barell connector for the solar power manager. Green light will indicate if solar charging is occurring.
+- **Note:** Connect the 25 Watt solar panels red and black wires to the barrel connector for the solar power manager. Green light will indicate if solar charging is occurring.
 
 ### Battery: LiPo
 - **Note:** Battery has power indicator with 4 LED lights to show capacity.

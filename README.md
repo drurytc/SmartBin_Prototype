@@ -92,7 +92,7 @@ Ensure all connections are secure and properly configured to enable the efficien
 <br/><br/>
 <img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/GPIO_Pins.png" width="50%" height="50%">
 <br/><br/>
-We are using a break out pin extender so it looks slightly different.
+We are using a breakout pin extender so it looks slightly different.
 <br/><br/>
 <img src="https://github.com/drurytc/SmartBin_Prototype/blob/master/Breakout_Extender.jpg" width="50%" height="50%">
 <br/><br/>
